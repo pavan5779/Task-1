@@ -18,7 +18,7 @@ pipeline {
         stage('Deploy to Test Environment') {
             steps {
                 sh 'echo Deploying to the test environment...'
-                // Add shell commands to deploy to your test server
+             // Add shell commands to deploy to your test server
             }
         }
     }
