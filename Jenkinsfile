@@ -11,7 +11,7 @@ pipeline {
         stage('Build & Test') {
             steps {
                 sh 'echo Building the application...'
-                // Add your build and test commands here
+                
             }
         }
 
