@@ -2,23 +2,28 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Checkout') {
             steps {
-                sh 'echo "Building the application"'
-                // You can add build commands here (e.g., npm install, gulp build, etc.)
+                git url: "https://github.com/pavan5779/my-web-app.git", branch: 'main'
             }
         }
-        stage('Test') {
+
+        stage('Build & Test') {
             steps {
-                sh 'echo "Running tests"'
-                // You can add test commands here (e.g., npm test, pytest, etc.)
+                sh 'echo Building the application...'
+                // Add your build and test commands here
             }
         }
-        stage('Deploy') {
+
+        stage('Deploy to Test Environment') {
             steps {
-                sh 'echo "Deploying to test environment"'
-                // You can add deployment commands here (e.g., scp, rsync, etc.)
+                sh 'echo Deploying to the test environment...'
+                // Add shell commands to deploy to your test server
             }
         }
+    }
+
+    triggers {
+        pollSCM('* * * * *')
     }
 }
